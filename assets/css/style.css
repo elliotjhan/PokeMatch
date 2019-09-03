@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: gray;
+    margin: 0 auto;
+} 
+.ultimateContainer {
+    background-image: url(../images/pokeballbackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 100vh;
+}
+.header {
+    background-image: url(../images/border.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    background-size: contain;
+    height: 20vh;
+    margin:0 auto;
+    margin-bottom: 1vh;
+    position: relative;
+}
+aside {
+    width: 18vw;
+    background-color: transparent;
+    float: left;
+    margin-left: 8vw;
+}
+.statsTitle {
+    width: 21vw;
+    height: 5vh;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 5vh;
+    color: maroon; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    margin-top: 2vh;
+}
+.stats {
+    background-color: transparent;
+    background-image: url(../images/textbox.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 21vw;
+    height: 10vh;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 3vh;
+    font-size: 3vh;
+    font-family: cursive;
+}
+#firstStat {
+    margin-bottom: 1vh;
+}
+.middleStat {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+#lastStat {
+    margin-top: 1vh;
+}
+.container {
+    background-color: transparent;
+    width: 60vw;
+    float: right;
+    perspective: 1000px;
+    margin-right: 8vw;
+}
+.row {
+    background-color: transparent;
+    height: 18vh;
+    width: 8.4vw;
+    margin-top: 0;
+    display: inline-block;
+    border-radius: 10px;
+    margin-top: 3vh;
+}
+.container > .row:nth-child(n+7) {
+    margin-top:6vh;
+}
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index:2;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modalContent {
+    background-image: url(../images/modalbackground.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 8% auto;
+    padding-top: 10px;
+    border: 1px solid #888;
+    width: 40%;
+    height: 55%;
+    font-size: 4vw;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    border-radius: 10px;
+    border: 5px solid white;
+}
+.close {
+    color: white;
+    text-align: center;
+    font-size: 15px;    
+    font-weight: bold;
+    padding: 7px;
+}
+button {
+    background-color: red;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border: 3px solid white;
+}
+button:hover,
+button:focus {
+    color: darkgray;
+    cursor: pointer;
+}
+.reset {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.1vw;
+    background-color: rgb(8, 7, 80);
+    padding: 1%;
+    color: white;
+    border: none;
+    border-radius: 0;
+}
+.movingPika {
+    position: absolute;
+    height: 30vh; 
+    width: 22vw;
+    background-color: transparent;
+    float: left;
+    background-image: url(../images/movingpikachu.gif);
+    background-repeat: no-repeat;
+    z-index: 100;
+    background-size: cover;
+    background-position: center;
+}
+.pokegif {
+    position: absolute;
+    height: 30vh;
+    width: 14vw;
+    background-color: transparent;
+    right: 0;
+    background-image: url(../images/magikarp.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    bottom: 0;
+}
+.card {
+    -webkit-transition: transform 1s;
+    transition: transform 1s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+.lfz {
+    background-image: url(../images/pokecard.png);
+    background-color: transparent;
+    height: 23.5vh;
+    width: 8.1vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    z-index: 99;
+    border-radius: 10px;
+}
+.front {
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 0;
+    position: absolute;
+    background-position: center;
+    border-radius: 10px;
+    height: 23.5vh;
+    width: 8.1vw;  
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.back {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.isFlipped {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+@media only screen and (max-width: 420px) {
+    
+    header {
+        height: 12vh;
+    }
+    .header {
+        height: 12vh;
+        width: 50vw;
+        margin-left: 165px;
+    }
+    .statsTitle {
+        font-size: 6vw;
+        margin-left: 28px;
+    }
+    .stats {
+        font-size: 3vw;
+        width: 36vw;
+        height: 6vh;
+        padding-top: 12px;
+    }
+    aside {
+        margin-top: 5vh;
+        margin-left: 2vw;
+    }
+    .row {
+        width: 18.5vw;
+        height: 14vh;
+        margin-top: 0%;
+    }
+    .lfz {
+        width: 18.5vw;
+        height: 14vh;
+        margin-top: 0%;
+    }
+    .front {
+        width: 18.5vw;
+        height: 14vh;
+        margin-top: 0%;
+    }
+    .container {
+        margin-right: 0%;
+        width: 80vw;
+        padding-left: 20vw;
+    }
+    .container > .row:nth-child(n+7) {
+        margin-top: 0%;
+    }
+    .pokegif {
+        left: 0;
+        bottom: 0;
+        height: 15vh;
+        width: 32vw;
+        margin-left: 15px;
+    }
+    .reset {
+        width: 80px;
+        height: 30px;
+        font-size: 10px;
+        padding: 5px;
+        left: 0;
+    }
+}
+
+@media only screen and (min-width:700px) and (max-width:800px) {
+    header {
+        height: 18vh;
+        padding: 18px;
+    }
+    .header {
+        height: 16vh;
+        margin-bottom: 0;
+    }
+    aside {
+        margin-left: 2vw;
+    }
+    .statsTitle {
+        font-size: 3vh;
+    }
+    .stats {
+        font-size: 2vh;
+        height: 5vh;
+        padding-top: 1.2vh;
+        font-size: 1.2rem;
+    }
+    .row {
+        width: 14.3vw;
+        height: 14vh;
+        margin-top: .6vh;
+    }
+    .lfz {
+        width: 14.3vw;
+        height: 14vh;
+        margin-top: .6vh;
+    }
+    .front {
+        width: 14.3vw;
+        height: 14vh;
+        margin-top: .6vh;
+    }
+    .container {
+        width: 80vw;
+        margin-right: 0px;
+        margin-top: 30px;
+        padding-left: 40px;
+    }
+    .container > .row:nth-child(n+7) {
+        margin-top: .6vh;
+    }
+    .container > .row:nth-child(16) {
+        margin-left: 14.9vw;
+    }
+    .pokegif {
+        left: 0;
+        height: 25vh;
+        width: 30vw;
+        margin-left: 5vw;
+    }
+}
+
+
+
+.pikachu {
+    background-image: url(../images/pikachu.png);  
+}
+.squirtle {
+    background-image: url(../images/squirtle.jpg);
+}
+.charmander {
+    background-image: url(../images/charmander.jpg);
+}
+.bulbasaur {
+    background-image: url(../images/bulbasaur.jpg);
+}
+.mew {
+    background-image: url(../images/mew.jpg);
+}
+.articuno {
+    background-image: url(../images/articuno.jpg);
+}
+.eevee {
+    background-image: url(../images/eevee.jpg);
+}
+.mewtwo {
+    background-image: url(../images/mewtwo.jpg);
+}
+.dragonite {
+    background-image: url(../images/dragonite.jpg);
+}
+.hidden {
+    display: none;
+}
