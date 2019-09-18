@@ -29,6 +29,7 @@ Feel free to submit pull requests and ask me questions through elliotjhan@gmail.
 1. JavaScript
 2. CSS3
 3. HTML5
+4. jQuery
 
 # License
 
