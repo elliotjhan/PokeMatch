@@ -139,7 +139,7 @@ button:focus {
     right: 0;
     font-size: 1.1vw;
     background-color: rgb(8, 7, 80);
-    padding: 1%;
+    padding: 1vh 1vw;
     color: white;
     border: none;
     border-radius: 0;
