@@ -104,13 +104,13 @@ function calculateAccuracy () {
 }
 
 function displayStats () {
+    debugger;
     var accuracy = calculateAccuracy()*100;
     $('aside > div:nth-child(5)').text(attempts);
-    if ($('aside > div:last-child').text() === "NaN%") {
+    $('aside > div:last-child').text(Math.floor(accuracy) + "%");
+    if ($('aside > div:last-child').text() == "NaN%") {
         $('aside > div:last-child').text('0%');
-    } else {
-        $('aside > div:last-child').text(Math.floor(accuracy) + "%");
-    }
+    } 
     $('aside > div:nth-child(3)').text(gamesPlayed);
 }
 
