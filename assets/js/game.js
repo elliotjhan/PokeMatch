@@ -5,7 +5,7 @@ class Game {
         this.firstCardClicked = null;
         this.secondCardClicked = null;
         this.matches = 0;
-        this.maxMatches = 1;
+        this.maxMatches = 9;
         this.attempts = 0;
         this.gamesPlayed = 0;
         this.firstCardClickedImage = null;
