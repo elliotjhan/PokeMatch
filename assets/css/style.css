@@ -7,7 +7,7 @@ body {
     background-color: gray;
     margin: 0 auto;
 } 
-.ultimateContainer {
+.gameContainer {
     background-image: url(../images/pokeballbackground.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -169,6 +169,7 @@ button:focus {
     bottom: 0;
 }
 .card {
+    cursor: pointer;
     -webkit-transition: transform 1s;
     transition: transform 1s;
     -webkit-transform-style: preserve-3d;
@@ -185,6 +186,9 @@ button:focus {
     position: absolute;
     z-index: 99;
     border-radius: 10px;
+}
+.lfz:hover {
+    background-image: url(../images/pokecard2.png);
 }
 .front {
     background-color: transparent;

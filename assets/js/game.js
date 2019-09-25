@@ -4,9 +4,9 @@ class Game {
         this.cardArray = new Cards;
         this.firstCardClicked = null;
         this.secondCardClicked = null;
-        this.matches = null;
-        this.maxMatches = 9;
-        this.attempts = null;
+        this.matches = 0;
+        this.maxMatches = 1;
+        this.attempts = 0;
         this.gamesPlayed = 0;
         this.firstCardClickedImage = null;
         this.secondCardClickedImage = null;
@@ -65,7 +65,7 @@ class Game {
     }
 
     displayModalOnWin() {
-        let modal = document.getElementById("myModal");
+        let modal = document.getElementsByClassName("modal")[0];
         let button = document.getElementsByClassName("close")[0];
     
         if (this.matches === this.maxMatches) {
@@ -91,14 +91,14 @@ class Game {
             this.firstCardClicked.css('pointer-events', ''); // allows for card to be clicked again once flipped back over
             this.firstCardClicked = null;
             this.firstCardClickedImage = null;
-            this.noClickable = false; //** review **/
+            this.noClickable = false; 
         }, 1500);
         setTimeout( () => {
             this.secondCardClicked.toggleClass('isFlipped');
             this.secondCardClicked.css('pointer-events', '');  // allows for card to be clicked again once flipped back over
             this.secondCardClicked = null;
             this.secondCardClickedImage = null;
-            this.noClickable = false; //** review **/
+            this.noClickable = false; 
         }, 1500);
     }
 
@@ -123,10 +123,9 @@ class Game {
     displayStats() {
         let accuracy = this.calculateAccuracy()*100;
         $('aside > div:nth-child(5)').text(this.attempts);
+        $('aside > div:last-child').text(Math.floor(accuracy) + "%");
         if ($('aside > div:last-child').text() === "NaN%") {
             $('aside > div:last-child').text('0%');
-        } else {
-            $('aside > div:last-child').text(Math.floor(accuracy) + "%");
         }
         $('aside > div:nth-child(3)').text(this.gamesPlayed);
     }
@@ -134,7 +133,6 @@ class Game {
     resetGame() {
         this.matches = 0;
         this.attempts = 0;
-        this.gamesPlayed = 0;
         this.displayStats();
         this.cardArray.appendCards();
         $('.card').removeClass('isFlipped');
