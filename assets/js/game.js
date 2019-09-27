@@ -20,6 +20,7 @@ class Game {
         this.applyClickHandlers = this.applyClickHandlers.bind(this);
         this.displayModalOnWin = this.displayModalOnWin.bind(this);
         this.resetGame = this.resetGame.bind(this);
+        this.displayResetModal = this.displayResetModal.bind(this);
     }
 
     executeGame() {
@@ -30,7 +31,8 @@ class Game {
     applyClickHandlers() {
         $('.card').click(this.handleCardClick);
         $('.card').click(this.displayStats);
-        $('.reset').click(this.resetGame);
+        $('.modalReset').click(this.resetGame);
+        $('.reset').click(this.displayResetModal);
     }
 
     handleCardClick (event) {
@@ -65,8 +67,8 @@ class Game {
     }
 
     displayModalOnWin() {
-        let modal = document.getElementsByClassName("modal")[0];
-        let button = document.getElementsByClassName("close")[0];
+        let modal = document.getElementsByClassName("modal1")[0];
+        let button = document.getElementsByClassName("modalClose")[0];
     
         if (this.matches === this.maxMatches) {
             setTimeout( () => {
@@ -82,6 +84,25 @@ class Game {
                 modal.style.display = "none";
             }
         }
+    }
+
+    displayResetModal() {
+
+        let modal = document.getElementsByClassName("modal2")[0];
+        let button = document.getElementsByClassName("modalReset")[0];
+        
+        modal.style.display = "block";
+    
+        button.onclick = () => {
+            modal.style.display = "none";
+        }
+
+        window.onclick = (event) => {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
     }
 
     flipCardsBackOnTimeout() {
