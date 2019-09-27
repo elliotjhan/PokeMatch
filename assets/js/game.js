@@ -40,7 +40,7 @@ class Game {
             return;
         }
         
-        $(event.currentTarget).toggleClass('isFlipped');
+        $(event.currentTarget).addClass('isFlipped');
         if (this.firstCardClicked === null) {
             this.firstCardClicked = $(event.currentTarget);
             this.firstCardClickedImage = this.firstCardClicked.find('div:nth-child(2)').css('background-image');
@@ -102,14 +102,14 @@ class Game {
     flipCardsBackOnTimeout() {
         this.noClickable = true; 
         setTimeout( () => {
-            this.firstCardClicked.toggleClass('isFlipped');
+            this.firstCardClicked.removeClass('isFlipped');
             this.firstCardClicked.css('pointer-events', ''); // allows for card to be clicked again once flipped back over
             this.firstCardClicked = null;
             this.firstCardClickedImage = null;
             this.noClickable = false; 
         }, 1500);
         setTimeout( () => {
-            this.secondCardClicked.toggleClass('isFlipped');
+            this.secondCardClicked.removeClass('isFlipped');
             this.secondCardClicked.css('pointer-events', '');  // allows for card to be clicked again once flipped back over
             this.secondCardClicked = null;
             this.secondCardClickedImage = null;
@@ -149,7 +149,9 @@ class Game {
         this.matches = 0;
         this.attempts = 0;
         this.displayStats();
-        this.cardArray.appendCards();
+        setTimeout(()=> {
+            this.cardArray.appendCards();
+        }, 300)
         $('.card').removeClass('isFlipped');
         $('.card').css('pointer-events', '');
         $('aside > div:last-child').text('0%');
