@@ -20,6 +20,7 @@ class Game {
         this.applyClickHandlers = this.applyClickHandlers.bind(this);
         this.displayModalOnWin = this.displayModalOnWin.bind(this);
         this.resetGame = this.resetGame.bind(this);
+        this.displayResetModal = this.displayResetModal.bind(this);
     }
 
     executeGame() {
@@ -30,7 +31,8 @@ class Game {
     applyClickHandlers() {
         $('.card').click(this.handleCardClick);
         $('.card').click(this.displayStats);
-        $('.reset').click(this.resetGame);
+        $('.modalReset').click(this.resetGame);
+        $('.reset').click(this.displayResetModal);
     }
 
     handleCardClick (event) {
@@ -38,7 +40,7 @@ class Game {
             return;
         }
         
-        $(event.currentTarget).toggleClass('isFlipped');
+        $(event.currentTarget).addClass('isFlipped');
         if (this.firstCardClicked === null) {
             this.firstCardClicked = $(event.currentTarget);
             this.firstCardClickedImage = this.firstCardClicked.find('div:nth-child(2)').css('background-image');
@@ -54,7 +56,7 @@ class Game {
             this.setCardValuesToNull();
             this.matches++;
             this.noClickable = false; 
-        } else if (this.firstCardClicked === null || this.secondCardClicked === null) {
+        } else if (this.firstCardClicked === null || this.secondCardClicked === null || this.firstCardClickedImage === null || this.secondCardClickedImage === null) {
             return;
         } else if (this.firstCardClickedImage !== this.secondCardClickedImage) {
             this.flipCardsBackOnTimeout();
@@ -65,8 +67,8 @@ class Game {
     }
 
     displayModalOnWin() {
-        let modal = document.getElementsByClassName("modal")[0];
-        let button = document.getElementsByClassName("close")[0];
+        let modal = document.getElementsByClassName("modal1")[0];
+        let button = document.getElementsByClassName("modalClose")[0];
     
         if (this.matches === this.maxMatches) {
             setTimeout( () => {
@@ -84,22 +86,35 @@ class Game {
         }
     }
 
+    displayResetModal() {
+
+        let modal = document.getElementsByClassName("modal2")[0];
+        let button = document.getElementsByClassName("modalReset")[0];
+        
+        modal.style.display = "block";
+    
+        button.onclick = () => {
+            modal.style.display = "none";
+        }
+
+    }
+
     flipCardsBackOnTimeout() {
         this.noClickable = true; 
         setTimeout( () => {
-            this.firstCardClicked.toggleClass('isFlipped');
+            this.firstCardClicked.removeClass('isFlipped');
             this.firstCardClicked.css('pointer-events', ''); // allows for card to be clicked again once flipped back over
             this.firstCardClicked = null;
             this.firstCardClickedImage = null;
             this.noClickable = false; 
-        }, 1500);
+        }, 1300);
         setTimeout( () => {
-            this.secondCardClicked.toggleClass('isFlipped');
+            this.secondCardClicked.removeClass('isFlipped');
             this.secondCardClicked.css('pointer-events', '');  // allows for card to be clicked again once flipped back over
             this.secondCardClicked = null;
             this.secondCardClickedImage = null;
             this.noClickable = false; 
-        }, 1500);
+        }, 1300);
     }
 
     setCardValuesToNull() {
@@ -134,10 +149,15 @@ class Game {
         this.matches = 0;
         this.attempts = 0;
         this.displayStats();
-        this.cardArray.appendCards();
+        setTimeout(()=> {
+            this.cardArray.appendCards();
+        }, 400);
+        this.setCardValuesToNull();
         $('.card').removeClass('isFlipped');
         $('.card').css('pointer-events', '');
         $('aside > div:last-child').text('0%');
+        this.noClickable = false; 
+
     }
 
     calculateAccuracy () {
