@@ -56,7 +56,7 @@ class Game {
             this.setCardValuesToNull();
             this.matches++;
             this.noClickable = false; 
-        } else if (this.firstCardClicked === null || this.secondCardClicked === null) {
+        } else if (this.firstCardClicked === null || this.secondCardClicked === null || this.firstCardClickedImage === null || this.secondCardClickedImage === null) {
             return;
         } else if (this.firstCardClickedImage !== this.secondCardClickedImage) {
             this.flipCardsBackOnTimeout();
@@ -107,14 +107,14 @@ class Game {
             this.firstCardClicked = null;
             this.firstCardClickedImage = null;
             this.noClickable = false; 
-        }, 1500);
+        }, 1300);
         setTimeout( () => {
             this.secondCardClicked.removeClass('isFlipped');
             this.secondCardClicked.css('pointer-events', '');  // allows for card to be clicked again once flipped back over
             this.secondCardClicked = null;
             this.secondCardClickedImage = null;
             this.noClickable = false; 
-        }, 1500);
+        }, 1300);
     }
 
     setCardValuesToNull() {
@@ -151,10 +151,13 @@ class Game {
         this.displayStats();
         setTimeout(()=> {
             this.cardArray.appendCards();
-        }, 300)
+        }, 400);
+        this.setCardValuesToNull();
         $('.card').removeClass('isFlipped');
         $('.card').css('pointer-events', '');
         $('aside > div:last-child').text('0%');
+        this.noClickable = false; 
+
     }
 
     calculateAccuracy () {
