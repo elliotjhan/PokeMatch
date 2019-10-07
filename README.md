@@ -1,7 +1,7 @@
 # Pokematch Memory Card Game
 ## Live Demo: [Link](https://pokematch.elliotjhan.com)
 
-![Image](pokematch.gif)
+![Image](pokematchdemo.gif)
 
 Welcome to the memory matching card game where you must catch em all! 
 Simply match 2 randomized overturned cards to make a match.
