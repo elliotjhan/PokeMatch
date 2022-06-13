@@ -200,9 +200,9 @@ button:focus {
     z-index: 99;
     border-radius: 10px;
 }
-.lfz:hover {
+/* .lfz:hover {
     background-image: url(../images/pokecard2.png);
-}
+} */
 .front {
     background-color: transparent;
     background-size: contain;
