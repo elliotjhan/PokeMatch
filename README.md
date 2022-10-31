@@ -30,6 +30,7 @@ Feel free to submit pull requests and ask me questions through elliotjhan@gmail.
 2. CSS3
 3. HTML5
 4. jQuery
+5. Node.js
 
 # License
 
